@@ -1,1 +1,3 @@
-IchBinKatze v3
+# IchBinKatze v3
+
+The IchBinKatze discord bot repository!

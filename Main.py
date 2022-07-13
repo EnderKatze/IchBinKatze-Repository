@@ -12,6 +12,7 @@ bot = commands.Bot()
 token = json.load(open("Config.json"))["token"]
 currency = json.load(open("Config.json"))["currency"]
 
+
 @bot.event
 async def on_ready():
     print(f"Bot ready! ({bot.user.name})")
@@ -32,7 +33,7 @@ async def userinfo(ctx, user: Option(discord.Member, "Money of which person?", r
     if user is None:
         user = ctx.author
     embed = discord.Embed(title=f"{user.name}'s Accout:", color=discord.Colour.blue())
-    embed.add_field(name="__Money:__", value=f"{Money.getMoney()} **{currency}**")
+    embed.add_field(name="__Money:__", value=f"{Money.getMoney(user.id)} **{currency}**")
     embed.set_footer(text="IchBinKatze v3 Bot")
     embed.set_thumbnail(url=user.avatar.url)
     await ctx.respond(embed=embed)
@@ -45,7 +46,7 @@ async def addmoney(ctx, moneytoadd, user: Option(discord.Member, "Money of which
         user = ctx.author
     if ctx.author.guild_permissions.administrator:
         print(user.id)
-        Money.addMoney(moneytoadd)
+        Money.addMoney(user.id, moneytoadd)
         await ctx.respond(f"Added {str(moneytoadd)} Katz-Coin to {user.name}'s Account")
     else:
         await ctx.respond(f"Sorry, {user.mention}, you don't have permissions to do this!")

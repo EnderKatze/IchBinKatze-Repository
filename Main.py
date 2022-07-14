@@ -35,9 +35,11 @@ async def addmoney(ctx, moneytoadd, user: Option(discord.Member, "Money of which
     if user is None:
         user = ctx.author
     if ctx.author.guild_permissions.administrator:
-        print(user.id)
-        money.addMoney(user.id, moneytoadd)
-        await ctx.respond(f"Added {str(moneytoadd)} Katz-Coin to {user.name}'s Account")
+        money.modifyMoney(user.id, moneytoadd)
+        embed = discord.Embed(title="Success!", colour=discord.Colour.blue())
+        embed.add_field(name=f"__{user.name} updated__",
+                        value=f"{user.name} now has {money.getMoney(user.id)} **{currency}**")
+        await ctx.respond(embed=embed)
     else:
         await ctx.respond(f"Sorry, {user.mention}, you don't have permissions to do this!")
 

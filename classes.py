@@ -13,17 +13,17 @@ class Money:
         try:
             return str(moneyList[str(targetID)])
         except Exception as exception:
-            print(exception)
+            del exception
             return 0
 
     @staticmethod
-    def modifyMoney(targetID, moneyToAdd):
+    def modifyMoney(targetID, modifyValue):
         with open("Money.json", "r") as f:
             moneyList = json.load(f)
         try:
-            moneyList[str(targetID)] = int(moneyToAdd) + moneyList[str(targetID)]
+            moneyList[str(targetID)] = int(modifyValue) + moneyList[str(targetID)]
         except Exception as exception:
-            print(exception)
-            moneyList[str(targetID)] = int(moneyToAdd)
+            del exception
+            moneyList[str(targetID)] = int(modifyValue)
         with open("Money.json", "w") as f:
             json.dump(moneyList, f)

@@ -1,4 +1,5 @@
 import json
+import os
 
 
 class Money:
@@ -19,8 +20,8 @@ class Money:
         with open("Money.json", "r") as f:
             moneyList = json.load(f)
         if str(targetID) in moneyList:
-            moneyList[str(targetID)] = moneyToAdd + moneyList[targetID]
+            moneyList[str(targetID)] = int(moneyToAdd) + moneyList[targetID]
         else:
-            moneyList[str(targetID)] = moneyToAdd + moneyList[targetID]
+            moneyList[str(targetID)] = int(moneyToAdd)
         with open("Money.json", "w") as f:
             json.dump(moneyList, f)

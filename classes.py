@@ -27,3 +27,9 @@ class Money:
             moneyList[str(targetID)] = int(modifyValue)
         with open("Money.json", "w") as f:
             json.dump(moneyList, f)
+
+class Level:
+    def __init__(self):
+        pass
+
+    def getLevel(self, serverID, userID):

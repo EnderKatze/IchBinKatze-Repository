@@ -12,7 +12,7 @@ class MoneyCog(commands.Cog):
         self.bot: commands.Bot = bot
 
     @slash_command(name="userinfo", description="Get current money value of someone!",
-                       guild_ids=[798881392435134464])
+                   guild_ids=[798881392435134464])
     async def userinfo(self, ctx, user: Option(discord.Member, "Money of which person?", required=False, default=None)):
         if user is None:
             user = ctx.author
@@ -23,7 +23,7 @@ class MoneyCog(commands.Cog):
         await ctx.respond(embed=embed)
 
     @slash_command(name="modifymoney", description="Set the money value of someone!",
-                       guild_ids=[798881392435134464])
+                   guild_ids=[798881392435134464])
     async def modifymoney(self, ctx, modifyvalue,
                           user: Option(discord.Member, "Money of which person?", required=False, default=None)):
         if user is None:

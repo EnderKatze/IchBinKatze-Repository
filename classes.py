@@ -28,8 +28,21 @@ class Money:
         with open("Money.json", "w") as f:
             json.dump(moneyList, f)
 
+
 class Level:
     def __init__(self):
         pass
 
-    def getLevel(self, serverID, userID):
+    @staticmethod
+    def getLevel(userID):
+        with open("Level.json", "r") as f:
+            expList = json.load(f)
+        try:
+            exp = expList[str(userID)]
+
+        except Exception as exception:
+            del exception
+            exp = 0
+
+        level = int(exp / 100)
+

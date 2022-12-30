@@ -7,15 +7,10 @@ import classes
 
 #os.chdir("./Json")
 
-money = classes.Money()
+level = classes.Level
 bot = commands.Bot()
 token = json.load(open("./Json/Config.json"))["token"]
-currency = json.load(open("./Json/Config.json"))["currency"]
-
-cogfiles = [
-    f"cogs.{filename[:-3]}" for filename in os.listdir("cogs/") if filename.endswith(".py")
-]
-
+cogfiles = [f"cogs.{filename[:-3]}" for filename in os.listdir("cogs/") if filename.endswith(".py")]
 for cogfile in cogfiles:
     try:
         bot.load_extension(cogfile)

@@ -7,7 +7,10 @@ import classes
 
 #os.chdir("./Json")
 
-level = classes.Level
+# You will need a Config.json (Example file in /Json) and some other json files
+# - Experience.json
+
+level = classes.Level()
 bot = commands.Bot()
 token = json.load(open("./Json/Config.json"))["token"]
 cogfiles = [f"cogs.{filename[:-3]}" for filename in os.listdir("cogs/") if filename.endswith(".py")]

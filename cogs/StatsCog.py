@@ -23,7 +23,10 @@ class StatsCog(commands.Cog):
 
         embed = discord.Embed(title=title, colour=discord.Colour.blue())
 
-        embed.add_field(name="Level", value=self.level.getLevel(user.id))
+        levelList = self.level.getLevel(user.id)
+        expToNextLevel = ((levelList[0]) * 100 * 1.25) - levelList[1]
+
+        embed.add_field(name="__Level__", value="**" + str(levelList[0]) + "**" + f" ({expToNextLevel} Exp to next Level)")
 
         await ctx.respond(embed=embed)
 
